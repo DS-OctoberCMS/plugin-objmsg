@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+messages:
+    label: 'wbry.objmsg::lang.controllers.messages.relation_messages_label'
+    manage:
+        form: $/wbry/objmsg/models/message/fields.yaml
+        list: $/wbry/objmsg/models/message/columns.yaml
+    view:
+        list: $/wbry/objmsg/models/message/columns.yaml
+        toolbarButtons: create|delete

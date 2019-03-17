@@ -1,0 +1,7 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+name: 'wbry.objmsg::lang.models.user.title'
+form: $/wbry/objmsg/models/user/fields.yaml
+modelClass: Wbry\ObjMsg\User

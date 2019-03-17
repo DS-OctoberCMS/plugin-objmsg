@@ -1,0 +1,12 @@
+fields:
+    message:
+        label: Сообщение
+        span: full
+        size: ''
+        required: 1
+        type: richeditor
+
+    post_id:
+        type: number
+        required: 1
+        hidden: true

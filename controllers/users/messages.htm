@@ -1,0 +1,19 @@
+<?php Block::put('breadcrumb') ?>
+    <ul class="right">
+        <li><a href="<?= Backend::url('wbry/objmsg/users') ?>"><?= trans('wbry.objmsg::lang.navigation.wbry_objmsg_users') ?></a></li>
+        <li><?= e($this->pageTitle) ?></li>
+    </ul>
+<?php Block::endPut() ?>
+
+<?php if (!$this->fatalError): ?>
+
+    <?= $this->relationRender('messages') ?>
+
+<?php else: ?>
+    <p class="flash-message static error"><?= e($this->fatalError) ?></p>
+    <p>
+        <a href="<?= Backend::url('wbry/objmsg/users') ?>" class="btn btn-default oc-icon-chevron-left">
+            <?= e(trans('backend::lang.form.return_to_list')) ?>
+        </a>
+    </p>
+<?php endif ?>

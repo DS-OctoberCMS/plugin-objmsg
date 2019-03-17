@@ -1,0 +1,11 @@
+name: 'wbry.objmsg::lang.controllers.messages.form_name'
+modelClass: Wbry\ObjMsg\Models\Message
+form: $/wbry/objmsg/models/message/fields.yaml
+defaultRedirect: wbry/objmsg/messages
+create:
+  redirect: 'wbry/objmsg/messages/update/:id'
+  redirectClose: wbry/objmsg/messages
+update:
+  redirect: wbry/objmsg/messages
+  redirectClose: wbry/objmsg/messages
+preview: {}

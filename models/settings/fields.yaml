@@ -1,0 +1,48 @@
+tabs:
+    fields:
+        # Control
+        control_admin_email:
+            label: 'wbry.objmsg::lang.models.settings.tabs.control.admin_email'
+            span: left
+            type: text
+            comment: 'wbry.objmsg::lang.models.settings.tabs.control.admin_email_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.control.tab'
+        control_is_user_obj:
+            label: 'wbry.objmsg::lang.models.settings.tabs.control.is_user_obj'
+            span: right
+            type: switch
+            default: true
+            comment: 'wbry.objmsg::lang.models.settings.tabs.control.is_user_obj_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.control.tab'
+
+        # Admin
+        admin_is_new_msg_user:
+            label: 'wbry.objmsg::lang.models.settings.tabs.admin.is_new_msg_user'
+            span: left
+            type: switch
+            default: true
+            comment: 'wbry.objmsg::lang.models.settings.tabs.admin.is_new_msg_user_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.admin.tab'
+
+        # User
+        user_is_new_msg:
+            label: 'wbry.objmsg::lang.models.settings.tabs.user.is_new_msg'
+            span: left
+            type: switch
+            default: false
+            comment: 'wbry.objmsg::lang.models.settings.tabs.user.is_new_msg_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.user.tab'
+        user_is_new_msg_admin:
+            label: 'wbry.objmsg::lang.models.settings.tabs.user.is_new_msg_admin'
+            span: right
+            type: switch
+            default: false
+            comment: 'wbry.objmsg::lang.models.settings.tabs.user.is_new_msg_admin_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.user.tab'
+        user_is_attach:
+            label: 'wbry.objmsg::lang.models.settings.tabs.user.is_attach'
+            span: left
+            type: switch
+            default: false
+            comment: 'wbry.objmsg::lang.models.settings.tabs.user.is_attach_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.user.tab'

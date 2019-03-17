@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table wbry_objmsg_messages'
+    - builder_table_create_wbry_objmsg_messages.php

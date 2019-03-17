@@ -1,0 +1,12 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+        width: 60px
+    message:
+        label: 'wbry.objmsg::lang.models.message.form_message'
+        type: text
+        searchable: true
+        sortable: true

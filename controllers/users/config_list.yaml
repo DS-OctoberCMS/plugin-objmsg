@@ -1,0 +1,20 @@
+# ===================================
+#  List Behavior Config
+# ===================================
+
+list: $/wbry/objmsg/models/user/columns.yaml
+modelClass: Wbry\ObjMsg\Models\User
+title: 'wbry.objmsg::lang.models.user.title'
+recordUrl: wbry/objmsg/users/messages/:id
+noRecordsMessage: backend::lang.list.no_records
+recordsPerPage: 20
+showPageNumbers: true
+showSetup: true
+showSorting: true
+showCheckboxes: true
+
+# Toolbar widget configuration
+toolbar:
+    # Search widget configuration
+    search:
+        prompt: backend::lang.list.search_prompt

@@ -1,0 +1,12 @@
+title: 'wbry.objmsg::lang.controllers.messages.list_title'
+modelClass: Wbry\ObjMsg\Models\Message
+list: $/wbry/objmsg/models/message/columns.yaml
+recordUrl: 'wbry/objmsg/messages/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

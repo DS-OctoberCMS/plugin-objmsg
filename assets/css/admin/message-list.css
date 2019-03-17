@@ -1,0 +1,8 @@
+.user-message-list .layout-row .list-header {
+    padding-left: 0;
+    padding-right: 0;
+}
+.user-message-list .list-scrollable-container {
+    margin-left: -20px;
+    margin-right: -20px;
+}
