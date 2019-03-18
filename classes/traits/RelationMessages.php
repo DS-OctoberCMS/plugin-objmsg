@@ -76,7 +76,7 @@ trait RelationMessages
                     $model->post_id = $objId;
                 });
             }
-            if ($eventAction === 'beforeCreate')
+            if ($eventAction === 'manageCreate')
             {
                 $model->bindEvent('model.beforeCreate', function() use ($model) {
                     $model->is_admin = 1;
