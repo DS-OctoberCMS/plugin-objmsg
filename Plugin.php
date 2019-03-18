@@ -9,6 +9,11 @@ use Wbry\ObjMsg\Models\Settings as SettingsModel;
 
 class Plugin extends PluginBase
 {
+    public $require = [
+        'RainLab.User',
+        'Wbry.Base',
+    ];
+
     public function pluginDetails()
     {
         return [
@@ -81,9 +86,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-//            Components\AddObjMsg::class  => 'addObjMsg',
-//            Components\ObjMsgList::class => 'objMsgList',
-//            Components\ObjMsgMessages::class => 'objMsgMessages',
+            Components\Messages::class  => 'messages',
         ];
     }
 

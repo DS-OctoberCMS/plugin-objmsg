@@ -2,6 +2,7 @@
 
 namespace Wbry\ObjMsg\Models;
 
+use Auth;
 use Model;
 
 /**
@@ -71,5 +72,10 @@ class Message extends Model
     public function scopeNewMsgAdmin($query)
     {
         return $query->where('is_view', '<', 1)->where('is_admin', '>', 0);
+    }
+
+    public function scopeObjCurrentUser($query)
+    {
+        return $query->where('post_id', '=', (Auth::check() ? Auth::getUser()->id : 0));
     }
 }

@@ -10,3 +10,8 @@ columns:
         type: text
         searchable: true
         sortable: true
+    created_at:
+        label: 'wbry.objmsg::lang.models.message.form_create'
+        type: text
+        searchable: true
+        sortable: true
