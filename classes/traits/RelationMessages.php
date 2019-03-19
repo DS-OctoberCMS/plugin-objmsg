@@ -2,7 +2,10 @@
 
 namespace Wbry\ObjMsg\Classes\Traits;
 
+use Mail;
+use Wbry\Base\Classes\Helpers;
 use Wbry\ObjMsg\Models\Message as MessageModel;
+use Wbry\ObjMsg\Models\Settings as SettingsModel;
 
 /**
  * Trait RelationMessages
@@ -47,13 +50,27 @@ trait RelationMessages
     }
 
     /*
-     * Helpers
+     * Filters
      */
 
     protected function filterObjId($objId)
     {
         return $objId;
     }
+
+    protected function filterUserEmail($objId, $email = '')
+    {
+        return $email;
+    }
+
+    protected function filterUserMailData($email, $model, $data)
+    {
+        return $data;
+    }
+
+    /*
+     * Helpers
+     */
 
     protected function getObjId()
     {
@@ -66,9 +83,10 @@ trait RelationMessages
 
     protected function modelRelationMessageExtend($eventAction = null, $isObjId = true)
     {
-        $objId = $isObjId ? $this->getObjId() : 0;
+        $objId   = $isObjId ? $this->getObjId() : 0;
+        $thisObj = $this;
 
-        MessageModel::extend(function($model) use ($objId, $eventAction)
+        MessageModel::extend(function($model) use ($thisObj, $eventAction, $objId)
         {
             if ($objId)
             {
@@ -80,6 +98,19 @@ trait RelationMessages
             {
                 $model->bindEvent('model.beforeCreate', function() use ($model) {
                     $model->is_admin = 1;
+                });
+                # mail send user
+                $model->bindEvent('model.afterCreate', function() use ($thisObj, $model, $objId) {
+                    $userEmail = $thisObj->filterUserEmail($objId);
+
+                    if ((bool)SettingsModel::get('admin_is_new_msg_user') && Helpers::checkMail($userEmail))
+                    {
+                        $sendData = $thisObj->filterUserMailData($userEmail, $model, [
+                            'message'     => $model->message,
+                            'account_url' => url((string)SettingsModel::get('admin_user_cabinet_url')),
+                        ]);
+                        Mail::sendTo($userEmail, 'wbry.objmsg::mail.send_message_user', $sendData);
+                    }
                 });
             }
             $model::$isMessageMutator = true;

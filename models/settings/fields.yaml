@@ -23,6 +23,13 @@ tabs:
             default: true
             comment: 'wbry.objmsg::lang.models.settings.tabs.admin.is_new_msg_user_cmt'
             tab: 'wbry.objmsg::lang.models.settings.tabs.admin.tab'
+        admin_user_cabinet_url:
+            label: 'wbry.objmsg::lang.models.settings.tabs.admin.user_cabinet_url'
+            span: left
+            type: text
+            default: '/cabinet'
+            comment: 'wbry.objmsg::lang.models.settings.tabs.admin.user_cabinet_url_cmt'
+            tab: 'wbry.objmsg::lang.models.settings.tabs.admin.tab'
 
         # User
         user_is_new_msg:

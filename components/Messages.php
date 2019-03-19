@@ -3,6 +3,9 @@
 namespace Wbry\ObjMsg\Components;
 
 use Auth;
+use Validator;
+use ValidationException;
+use ApplicationException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use Wbry\ObjMsg\Models\Message as MessageModel;
@@ -118,6 +121,55 @@ class Messages extends ComponentBase
         }
 
         return response($retData);
+    }
+
+    public function onSendMessage()
+    {
+        return;
+
+        /*
+         * Validate
+         */
+        if (! (bool)SettingsModel::get('user_is_new_msg'))
+            throw new ApplicationException(Lang::get('wbry.objmsg::lang.components.messages.msg.no_send_user_msg'));
+
+        $message = post('message');
+
+        $validation = Validator::make([
+            'message' => $message
+        ],[
+            'message' => 'required|between:2,1000'
+        ]);
+        $validation->setAttributeNames([
+            'message' => Lang::get('wbry.objmsg::lang.components.messages.attribute.message')
+        ]);
+
+        if ($validation->fails())
+            throw new ValidationException($validation);
+
+        /*
+         * Information
+         */
+
+        # save message
+        MessageModel::create([
+            'post_id' => $this->postId,
+            'message' => trim($message),
+            'is_admin' => 0,
+            'is_view'  => 0,
+        ]);
+
+        Flash::success(Lang::get('wbry.objmsg::lang.components.messages.msg.send_msg'));
+
+        # mail send admin
+        $admin_mail = (string)SettingsModel::get('control_admin_email');
+        if ((bool)SettingsModel::get('user_is_new_msg_admin') && Helpers::checkMail($admin_mail))
+        {
+            Mail::sendTo($admin_mail, 'wbry.objmsg::mail.send_message_admin', [
+                'id'      => $this->postId,
+                'message' => $message,
+            ]);
+        }
     }
 
     /*

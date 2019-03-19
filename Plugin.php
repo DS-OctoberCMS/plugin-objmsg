@@ -93,11 +93,8 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-//            'wbry.objmsg::mail.add_app_reg_admin'     => 'Add new ObjMsg (send admin)',
-//            'wbry.objmsg::mail.add_app_reg_user'      => 'Add new ObjMsg (send user)',
-//            'wbry.objmsg::mail.change_app_reg_status' => 'Change status',
-//            'wbry.objmsg::mail.send_app_reg_message'  => 'New ObjMsg msg (user)',
-//            'wbry.objmsg::mail.send_app_reg_message_admin'  => 'New ObjMsg msg (admin)',
+            'wbry.objmsg::mail.send_message_user'  => 'New msg (user)',
+            'wbry.objmsg::mail.send_message_admin' => 'New msg (admin)',
         ];
     }
 }

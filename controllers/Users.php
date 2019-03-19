@@ -63,6 +63,11 @@ class Users extends Controller
         return UserModel::getUserOnId($objId) ? $objId : 0;
     }
 
+    public function filterUserEmail($objId)
+    {
+        return ($user = UserModel::getUserOnId($objId)) ? $user->email : '';
+    }
+
     /*
      * Actions
      */
