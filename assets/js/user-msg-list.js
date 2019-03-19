@@ -56,7 +56,7 @@ $(document).ready(function()
         let msgUrl = $('#userMsgList').data('msg-url');
 
         if (msgUrl)
-            msgUrl = msgUrl.replace(/\/msg_id$/, '/');
+            msgUrl = msgUrl.replace(/\/(msg_id|[0-9]+)$/, '/');
 
         table.$('tr.selected').removeClass('selected');
         $this.addClass('selected');

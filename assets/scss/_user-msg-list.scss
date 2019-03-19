@@ -1,0 +1,17 @@
+#userMsgList {
+  border-radius: 10px;
+
+  tr {
+    cursor: pointer;
+
+    &.even.selected {
+      background-color: #B0BED9;
+    }
+    &.odd.selected {
+      background-color: #acbad4;
+    }
+    &:hover {
+      background-color: #f6f6f6;
+    }
+  }
+}

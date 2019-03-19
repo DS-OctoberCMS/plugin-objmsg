@@ -1,0 +1,10 @@
+<div class="messages-block m-auto py-4">
+    <div class="center">
+        <a href="{{ __SELF__.property('indexMsgUrl')|page }}" class="btn btn-secondary float-left">Назад</a>
+        <h3 class="">Сообщение</h3>
+        <hr>
+    </div>
+    <div class="content-block content-box-shadow my-4">
+        {{ __SELF__.getMsg(__SELF__.param(__SELF__.property('msgIdParam')))|raw }}
+    </div>
+</div>

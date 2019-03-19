@@ -3,6 +3,7 @@
 namespace Wbry\ObjMsg\Components;
 
 use Auth;
+use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
 use Wbry\ObjMsg\Models\Message as MessageModel;
 use Wbry\ObjMsg\Models\Settings as SettingsModel;
@@ -31,23 +32,50 @@ class Messages extends ComponentBase
             'indexMsgUrl' => [
                 'title'       => 'wbry.objmsg::lang.components.messages.indexMsgUrl.title',
                 'description' => 'wbry.objmsg::lang.components.messages.indexMsgUrl.desc',
-                'default'     => '/messages',
-                'type'        => 'string',
+                'type'        => 'dropdown',
+                'default'     => '---',
             ],
             'createMsgUrl' => [
                 'title'       => 'wbry.objmsg::lang.components.messages.createMsgUrl.title',
                 'description' => 'wbry.objmsg::lang.components.messages.createMsgUrl.desc',
-                'default'     => '/messages/create',
-                'type'        => 'string',
+                'type'        => 'dropdown',
+                'default'     => '---',
             ],
-//            'previewMsgUrl' => [
-//                'title'       => 'wbry.objmsg::lang.components.messages.previewMsgUrl.title',
-//                'description' => 'wbry.objmsg::lang.components.messages.previewMsgUrl.desc',
-//                'default'     => '/messages/{{ :id }}',
-//                'type'        => 'string',
-//                'showExternalParam' => true,
-//            ],
+            'previewMsgUrl' => [
+                'title'       => 'wbry.objmsg::lang.components.messages.previewMsgUrl.title',
+                'description' => 'wbry.objmsg::lang.components.messages.previewMsgUrl.desc',
+                'type'        => 'dropdown',
+                'default'     => '---',
+                'showExternalParam' => true,
+            ],
+            'msgIdParam' => [
+                'title'       => 'wbry.objmsg::lang.components.messages.msgIdParam.title',
+                'description' => 'wbry.objmsg::lang.components.messages.msgIdParam.desc',
+                'type'        => 'string',
+                'default'     => 'id',
+                'showExternalParam' => true,
+            ],
         ];
+    }
+
+    public function getIndexMsgUrlOptions()
+    {
+        return $this->getPagesList();
+    }
+
+    public function getCreateMsgUrlOptions()
+    {
+        return $this->getPagesList();
+    }
+
+    public function getPreviewMsgUrlOptions()
+    {
+        return $this->getPagesList();
+    }
+
+    private function getPagesList()
+    {
+        return Page::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
     }
 
     /*
@@ -95,6 +123,26 @@ class Messages extends ComponentBase
     /*
      * Helpers
      */
+
+    public function getMsg($msgId)
+    {
+        if ($msgId && is_numeric($msgId) && $msgId > 0 && $msg = MessageModel::where('id', $msgId)->first())
+        {
+            $msg->is_view = 1;
+            $msg->save();
+
+            return $msg->message;
+        }
+        return '';
+    }
+
+    public function getMsgIdParam()
+    {
+        $idParamName = $this->property('msgIdParam');
+        return [
+            $idParamName => 'msg_id'
+        ];
+    }
 
     public function getNewMsgCnt($objId = null)
     {

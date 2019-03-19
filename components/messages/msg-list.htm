@@ -1,4 +1,9 @@
-<table id="userMsgList" data-msg-url="{{ __SELF__.property('previewMsgUrl')|page({ id: 'msg_id' }) }}" class="table display" style="width:100%">
+{% set previewParam = __SELF__.getMsgIdParam() %}
+
+<table id="userMsgList"
+       data-msg-url="{{ __SELF__.property('previewMsgUrl')|page(previewParam) }}"
+       class="table display"
+       style="width:100%">
     <thead>
     <tr>
         <th>Создано</th>

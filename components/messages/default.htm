@@ -1,9 +1,11 @@
-<h2>Сообщения</h2>
+<div class="messages-block m-auto py-4">
+    <h2>Сообщения</h2>
 
-{% if __SELF__.msgCnt() %}
-    <div class="content-block content-box-shadow my-4">
-        {% partial __SELF__~'::msg-list' %}
-    </div>
-{% else %}
-    <div class="my-4">На текущий момент у вас нет сообщений</div>
-{% endif %}
+    {% if __SELF__.msgCnt() %}
+        <div class="content-block content-box-shadow my-4">
+            {% partial __SELF__~'::msg-list' %}
+        </div>
+    {% else %}
+        <div class="my-4">На текущий момент у вас нет сообщений</div>
+    {% endif %}
+</div>
