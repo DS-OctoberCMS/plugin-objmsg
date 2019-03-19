@@ -51,8 +51,16 @@ $(document).ready(function()
     });
 
     $('#userMsgList tbody').on('click', 'tr', function() {
+        let $this  = $(this);
+        let msgId  = $this.find('.msg-url-data:eq(0)').data('msg-id');
+        let msgUrl = $('#userMsgList').data('msg-url');
+
+        if (msgUrl)
+            msgUrl = msgUrl.replace(/\/msg_id$/, '/');
+
         table.$('tr.selected').removeClass('selected');
-        $(this).addClass('selected');
-        window.location.href = $(this).find('.msg-url-data:eq(0)').data('msg-url');
+        $this.addClass('selected');
+
+        window.location.href = msgUrl + msgId;
     });
 });

@@ -40,13 +40,13 @@ class Messages extends ComponentBase
                 'default'     => '/messages/create',
                 'type'        => 'string',
             ],
-            'previewMsgUrl' => [
-                'title'       => 'wbry.objmsg::lang.components.messages.previewMsgUrl.title',
-                'description' => 'wbry.objmsg::lang.components.messages.previewMsgUrl.desc',
-                'default'     => '/messages/{{ :id }}',
-                'type'        => 'string',
-                'showExternalParam' => true,
-            ],
+//            'previewMsgUrl' => [
+//                'title'       => 'wbry.objmsg::lang.components.messages.previewMsgUrl.title',
+//                'description' => 'wbry.objmsg::lang.components.messages.previewMsgUrl.desc',
+//                'default'     => '/messages/{{ :id }}',
+//                'type'        => 'string',
+//                'showExternalParam' => true,
+//            ],
         ];
     }
 
@@ -59,6 +59,10 @@ class Messages extends ComponentBase
         MessageModel::$isMessageMutator = true;
 
         $retData = $this->resultJqDataTableQuery(MessageModel::make(), MessageModel::objCurrentUser(), [
+            'id' => [
+                'column' => 'id',
+                'typeString' => false,
+            ],
             'message' => [
                 'column' => 'message',
             ],
@@ -82,7 +86,7 @@ class Messages extends ComponentBase
         {
             if ($val['is_admin'] > 0 && $val['is_view'] < 1)
                 $val['message'] = '<span class="badge badge-danger mr-2">*</span>'.$val['message'];
-            $val['created'] = '<span class="msg-url-data" data-msg-url="test-url">'. ($val['created'] ? $val['created']->format('Y-m-d H:i') : '-') .'</span>';
+            $val['created'] = '<span class="msg-url-data" data-msg-id="'. $val['id'] .'">'. ($val['created'] ? $val['created']->format('Y-m-d H:i') : '-') .'</span>';
         }
 
         return response($retData);
