@@ -55,6 +55,11 @@ class Messages extends ComponentBase
         ];
     }
 
+    public function onRun()
+    {
+        $this->addJs('/plugins/wbry/objmsg/assets/js/jquery.dataTables.min.js');
+    }
+
     public function getIndexMsgUrlOptions()
     {
         return $this->getPagesList();
