@@ -43,7 +43,7 @@ class Plugin extends PluginBase
         return [
             'settings' => [
                 'label'       => 'wbry.objmsg::lang.plugin.name',
-                'description' => 'wbry.objmsg::lang.models.settings.settings_desc',
+                'description' => 'wbry.objmsg::lang.models.settings.desc',
                 'category'    => SettingsManager::CATEGORY_CUSTOMERS,
                 'icon'        => 'icon-send-o',
                 'class'       => 'Wbry\ObjMsg\Models\Settings',

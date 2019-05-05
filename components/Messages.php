@@ -38,12 +38,6 @@ class Messages extends ComponentBase
                 'type'        => 'dropdown',
                 'default'     => '---',
             ],
-            'createMsgUrl' => [
-                'title'       => 'wbry.objmsg::lang.components.messages.createMsgUrl.title',
-                'description' => 'wbry.objmsg::lang.components.messages.createMsgUrl.desc',
-                'type'        => 'dropdown',
-                'default'     => '---',
-            ],
             'previewMsgUrl' => [
                 'title'       => 'wbry.objmsg::lang.components.messages.previewMsgUrl.title',
                 'description' => 'wbry.objmsg::lang.components.messages.previewMsgUrl.desc',
@@ -62,11 +56,6 @@ class Messages extends ComponentBase
     }
 
     public function getIndexMsgUrlOptions()
-    {
-        return $this->getPagesList();
-    }
-
-    public function getCreateMsgUrlOptions()
     {
         return $this->getPagesList();
     }
