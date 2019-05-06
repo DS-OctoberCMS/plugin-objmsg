@@ -57,6 +57,7 @@ class Messages extends ComponentBase
 
     public function onRun()
     {
+        $this->addCss('/plugins/wbry/objmsg/assets/css/jquery.dataTables.min.css');
         $this->addJs('/plugins/wbry/objmsg/assets/js/jquery.dataTables.min.js');
     }
 
