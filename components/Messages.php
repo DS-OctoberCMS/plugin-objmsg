@@ -171,16 +171,23 @@ class Messages extends ComponentBase
      * Helpers
      */
 
-    public function getMsg($msgId)
+    public function getMsgObj($msgId, $isView = false)
     {
-        if ($msgId && is_numeric($msgId) && $msgId > 0 && $msg = MessageModel::where('id', $msgId)->first())
+        $msg = null;
+        if (is_numeric($msgId) && $msgId > 0 && $msg = MessageModel::where('id', $msgId)->first())
         {
-            $msg->is_view = 1;
-            $msg->save();
-
-            return $msg->message;
+            if ($isView)
+            {
+                $msg->is_view = 1;
+                $msg->save();
+            }
         }
-        return '';
+        return $msg;
+    }
+
+    public function getMsg($msgId, $isView = true)
+    {
+        return ($msg = $this->getMsgObj($msgId, $isView)) ? $msg->message : '';
     }
 
     public function getMsgIdParam()
